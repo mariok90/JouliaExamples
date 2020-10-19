@@ -44,8 +44,10 @@ res = RenewableEnergySource(res_df, avail)
 # generation of the Joulia model
 elmod = JouliaModel(pp, res, storages, nodes, lines)
 
-# sclicing the data in weeks with the first full week starting at hour 49
+# slicing the data in weeks with the first full week starting at hour 49
 slices = week_slices(49)
 
 # running the Joulia model for week 30 using the Gurobi solver
-results = run_model(elmod, slices[30], solver=GurobiSolver())
+results = run_model(elmod, slices[30:31], solver=Gurobi.Optimizer)
+
+
