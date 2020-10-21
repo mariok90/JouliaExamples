@@ -48,6 +48,15 @@ elmod = JouliaModel(pp, res, storages, nodes, lines)
 slices = week_slices(49)
 
 # running the Joulia model for week 30 using the Gurobi solver
-results = run_model(elmod, slices[30:31], solver=Gurobi.Optimizer)
+results = run_model(elmod, slices, solver=Gurobi.Optimizer)
+
+elmod.results[:LOST_LOAD].value |> sum
+
+sum(nodes.load[n][t] for n in keys(nodes.load), t in 1:8760)
 
 
+asdf = filter(x -> x.value > 0, elmod.results[:LOST_LOAD])
+
+test = combine(groupby(asdf, :Node), :value => sum => :value)
+
+sort!(test, :value, rev=true)
