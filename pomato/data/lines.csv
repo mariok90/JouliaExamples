@@ -1,4 +1,4 @@
-line_id,from,to,voltage,reactance,resistance,circuits,thermal_limit
+id,From,To,Voltage,Reactance,Resistance,Circuits,ThermalLimit
 l11522,n5543,n5557,132,25.95784487,6.482630206,1,169.1867229
 l11516,n5543,n5557,132,24.62575238,6.149957633,1,169.1867229
 l6920,n5557,n5579,132,9.896138579,2.471430398,1,169.1867229
